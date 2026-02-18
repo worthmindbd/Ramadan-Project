@@ -130,12 +130,14 @@ http://YOUR_VPS_IP:3000
 **4. Configure Build Settings**
 Since this is a pure static site (no build step needed):
 
-| Setting | Value |
-|---------|-------|
-| Build Type | `Static` |
-| Publish Directory | `/` (root) |
-| Build Command | *(leave empty)* |
+| Dokploy Field | Value |
+|---------------|-------|
+| **Build Type** | `Static` |
+| **Build Path** | `/` *(root — this is where your index.html lives)* |
+| **Build Command** | *(leave empty — no build needed)* |
 | **Port** | `1447` 🌙 |
+
+> 💡 **Note:** In Dokploy's Static build type, **"Build Path"** is the folder inside your repo that contains `index.html`. Since all our files (`index.html`, `style.css`, `script.js`) are in the root of the repo, set it to `/`. You will **not** see a "Publish Directory" field — that only appears for Nixpacks builds.
 
 **5. Set Domain (Optional)**
 - Go to **Domains** tab
