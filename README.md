@@ -128,16 +128,13 @@ http://YOUR_VPS_IP:3000
 - Branch: `main`
 
 **4. Configure Build Settings**
-Since this is a pure static site (no build step needed):
 
 | Dokploy Field | Value |
 |---------------|-------|
-| **Build Type** | `Static` |
-| **Build Path** | `/` *(root — this is where your index.html lives)* |
-| **Build Command** | *(leave empty — no build needed)* |
+| **Build Type** | `Dockerfile` |
+| **Dockerfile Path** | `./Dockerfile` |
+| **Docker Context Path** | `.` |
 | **Port** | `1447` 🌙 |
-
-> 💡 **Note:** In Dokploy's Static build type, **"Build Path"** is the folder inside your repo that contains `index.html`. Since all our files (`index.html`, `style.css`, `script.js`) are in the root of the repo, set it to `/`. You will **not** see a "Publish Directory" field — that only appears for Nixpacks builds.
 
 **5. Set Domain (Optional)**
 - Go to **Domains** tab
@@ -146,7 +143,7 @@ Since this is a pure static site (no build step needed):
 
 **6. Deploy**
 - Click **"Deploy"**
-- Watch the build logs — it should complete in seconds
+- Watch the build logs — Nginx will serve the site on port `1447`
 - Your site is live! 🎉
 
 ### Auto-Deploy on Push
