@@ -155,7 +155,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 0;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -164,7 +163,10 @@ body {
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
   margin: 0 -20px;
-  padding: 16px 20px;
+  padding: 12px 16px;
+  gap: 8px;
+  flex-wrap: nowrap;
+  /* keep everything on one row */
 }
 
 .nav-logo {
@@ -199,11 +201,12 @@ body {
 }
 
 #live-clock {
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   color: var(--emerald);
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   text-shadow: 0 0 10px rgba(0, 200, 150, 0.4);
+  white-space: nowrap;
 }
 
 #lang-toggle {
@@ -1111,4 +1114,65 @@ footer a {
 
 .animated-border {
   animation: borderGlow 3s ease-in-out infinite;
+}
+
+/* ── Footer developer credit ── */
+.footer-dev {
+  margin-top: 14px;
+  font-size: 0.82rem;
+  opacity: 0.7;
+  color: var(--text-secondary);
+}
+
+.footer-dev a {
+  color: var(--gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.footer-dev a:hover {
+  color: var(--emerald);
+  opacity: 1;
+}
+
+/* ── Mobile navbar fix ── */
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: nowrap;
+    padding: 10px 14px;
+    gap: 6px;
+  }
+
+  .nav-logo {
+    font-size: 0.95rem;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+
+  .nav-logo .crescent {
+    font-size: 1.2rem;
+  }
+
+  .nav-right {
+    gap: 8px;
+    flex-shrink: 0;
+  }
+
+  #live-clock {
+    font-size: 0.72rem;
+    white-space: nowrap;
+  }
+
+  #lang-toggle {
+    padding: 6px 12px;
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  /* Force table headers and cells to never wrap */
+  th,
+  td {
+    white-space: nowrap;
+  }
 }
