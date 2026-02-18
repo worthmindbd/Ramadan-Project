@@ -135,6 +135,7 @@ Since this is a pure static site (no build step needed):
 | Build Type | `Static` |
 | Publish Directory | `/` (root) |
 | Build Command | *(leave empty)* |
+| **Port** | `1447` 🌙 |
 
 **5. Set Domain (Optional)**
 - Go to **Domains** tab
