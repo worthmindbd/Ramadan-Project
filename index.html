@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Bangladesh Ramadan Calendar 2026 — Sehri & Iftar times for Dhaka. রমজান ১৪৪৭ ক্যালেন্ডার — ঢাকার সেহরি ও ইফতারের সময়সূচি।" />
+    <meta name="keywords" content="Ramadan 2026, Bangladesh, Dhaka, Sehri, Iftar, রমজান, সেহরি, ইফতার, ঢাকা" />
+    <meta property="og:title" content="Ramadan 1447 — Bangladesh Calendar 2026" />
+    <meta property="og:description" content="Sehri & Iftar times for Dhaka, Bangladesh. রমজান ক্যালেন্ডার ২০২৬।" />
+    <meta name="theme-color" content="#050d1a" />
+    <title>রমজান ১৪৪৭ | Ramadan 2026 — Bangladesh</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌙</text></svg>" />
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div id="stars" aria-hidden="true"></div>
+    <div id="particles" aria-hidden="true"></div>
+
+    <!-- Mosque SVG Silhouette (decorative) -->
+    <svg class="mosque-silhouette" viewBox="0 0 900 200" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+        style="position:fixed;bottom:0;left:50%;transform:translateX(-50%);z-index:1;pointer-events:none;max-width:100%;width:100%;">
+        <path fill="rgba(240,192,64,0.08)" d="
+      M0,200 L0,160 L30,160 L30,120 L50,100 L70,120 L70,160
+      L90,160 L90,130 L100,110 L110,130 L110,160
+      L130,160 L130,80 L140,60 L150,80 L150,160
+      L170,160 L170,140 L180,120 L190,140 L190,160
+      L200,160 L200,170 L220,170 L220,160
+      L240,160 L240,120 L250,100 L260,120 L260,160
+      L280,160 L280,130 L290,110 L300,130 L300,160
+      L320,160 L320,80 L330,60 L340,80 L340,160
+      L360,160 L360,140 L370,120 L380,140 L380,160
+      L400,160 L400,50 L410,20 L420,50 L420,160
+      L440,160 L440,80 L450,60 L460,80 L460,160
+      L480,160 L480,130 L490,110 L500,130 L500,160
+      L520,160 L520,120 L530,100 L540,120 L540,160
+      L560,160 L560,140 L570,120 L580,140 L580,160
+      L600,160 L600,80 L610,60 L620,80 L620,160
+      L640,160 L640,130 L650,110 L660,130 L660,160
+      L680,160 L680,120 L690,100 L700,120 L700,160
+      L720,160 L720,140 L730,120 L740,140 L740,160
+      L760,160 L760,80 L770,60 L780,80 L780,160
+      L800,160 L800,130 L810,110 L820,130 L820,160
+      L840,160 L840,120 L850,100 L860,120 L860,160
+      L880,160 L880,160 L900,160 L900,200 Z
+    " />
+    </svg>
+
+    <div class="page-wrapper">
+
+        <!-- ── Navbar ── -->
+        <nav class="navbar" role="navigation" aria-label="Main navigation">
+            <div class="nav-logo">
+                <span class="crescent" aria-hidden="true">🌙</span>
+                <span>রমজান ১৪৪৭</span>
+            </div>
+            <div class="nav-right">
+                <span id="live-clock" aria-live="polite" aria-label="Current Bangladesh time">--:--:-- BST</span>
+                <button id="lang-toggle" aria-label="Toggle language between Bangla and English">বাংলা</button>
+            </div>
+        </nav>
+
+        <!-- ── Hero ── -->
+        <header class="hero" role="banner">
+            <span class="hero-moon" aria-hidden="true">🌙</span>
+            <div class="hero-arabic" lang="ar" aria-label="Ramadan Mubarak in Arabic">رَمَضَان مُبَارَك</div>
+            <h1 class="hero-title" data-en="Ramadan 1447 AH" data-bn="রমজান ১৪৪৭ হিজরি">Ramadan 1447 AH</h1>
+            <p class="hero-subtitle" data-en="Bangladesh Ramadan Calendar 2026"
+                data-bn="বাংলাদেশ রমজান ক্যালেন্ডার ২০২৬">Bangladesh Ramadan Calendar 2026</p>
+            <p class="hero-desc" data-en="Embrace the blessed month of fasting, prayer, and reflection"
+                data-bn="রোজা, নামাজ ও আত্মশুদ্ধির পবিত্র মাসকে স্বাগত জানাই">Embrace the blessed month of fasting,
+                prayer, and reflection</p>
+            <div class="hero-badges">
+                <span class="badge badge-gold">📍 <span data-en="Dhaka, Bangladesh" data-bn="ঢাকা, বাংলাদেশ">Dhaka,
+                        Bangladesh</span></span>
+                <span class="badge badge-emerald">🕐 <span data-en="Bangladesh Standard Time (UTC+6)"
+                        data-bn="বাংলাদেশ সময় (UTC+6)">Bangladesh Standard Time (UTC+6)</span></span>
+                <span class="badge badge-gold">📅 <span data-en="Ramadan 1447 AH" data-bn="রমজান ১৪৪৭ হিজরি">Ramadan
+                        1447 AH</span></span>
+            </div>
+        </header>
+
+        <!-- ── Countdown ── -->
+        <section class="countdown-section reveal" aria-label="Countdown timer">
+            <div class="glass-card countdown-card glow-gold animated-border">
+                <p id="countdown-label" aria-live="polite">Next Sehri Ends</p>
+                <div class="countdown-grid" role="timer" aria-label="Countdown">
+                    <div class="cd-unit">
+                        <div class="cd-value" id="cd-days">00</div>
+                        <div class="cd-label" id="cd-days-label">Days</div>
+                    </div>
+                    <div class="cd-colon" aria-hidden="true">:</div>
+                    <div class="cd-unit">
+                        <div class="cd-value" id="cd-hours">00</div>
+                        <div class="cd-label" id="cd-hours-label">Hours</div>
+                    </div>
+                    <div class="cd-colon" aria-hidden="true">:</div>
+                    <div class="cd-unit">
+                        <div class="cd-value" id="cd-mins">00</div>
+                        <div class="cd-label" id="cd-mins-label">Mins</div>
+                    </div>
+                    <div class="cd-colon" aria-hidden="true">:</div>
+                    <div class="cd-unit">
+                        <div class="cd-value" id="cd-secs">00</div>
+                        <div class="cd-label" id="cd-secs-label">Secs</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Today's Times ── -->
+        <section class="today-section reveal" aria-label="Today's prayer times">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Today's Times" data-bn="আজকের সময়">Today's Times</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="glass-card today-card-wrapper glow-emerald" id="today-card" aria-live="polite">
+                <!-- Rendered by JS -->
+                <div class="today-empty">
+                    <div class="moon-icon">🌙</div>
+                    <p>Loading...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Islamic Decorative Pattern ── -->
+        <div class="islamic-pattern" aria-hidden="true">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+
+        <!-- ── Full Calendar ── -->
+        <section class="calendar-section reveal" aria-label="Full Ramadan calendar">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Ramadan Calendar 2026" data-bn="রমজান ক্যালেন্ডার ২০২৬">Ramadan
+                    Calendar 2026</h2>
+                <p class="section-subtitle" data-en="Dhaka, Bangladesh — All times in BST (UTC+6)"
+                    data-bn="ঢাকা, বাংলাদেশ — সকল সময় BST (UTC+6)">Dhaka, Bangladesh — All times in BST (UTC+6)</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="glass-card calendar-wrapper">
+                <div class="calendar-table-container">
+                    <table role="grid" aria-label="Ramadan 2026 Sehri and Iftar times">
+                        <thead id="calendar-head">
+                            <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Sehri Ends</th>
+                                <th scope="col">Iftar</th>
+                            </tr>
+                        </thead>
+                        <tbody id="calendar-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── Prayer Times Table ── -->
+        <section class="prayer-section reveal" aria-label="Daily prayer times">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Daily Prayer Times" data-bn="দৈনিক নামাজের সময়">Daily Prayer Times
+                </h2>
+                <p class="section-subtitle" data-en="Dhaka, Bangladesh — 5 Daily Prayers during Ramadan 2026"
+                    data-bn="ঢাকা, বাংলাদেশ — রমজান ২০২৬ এর ৫ ওয়াক্ত নামাজ">Dhaka, Bangladesh — 5 Daily Prayers during
+                    Ramadan 2026</p>
+                <div class="section-divider"></div>
+            </div>
+            <div class="glass-card calendar-wrapper">
+                <div class="calendar-table-container">
+                    <table role="grid" aria-label="Ramadan 2026 daily prayer times">
+                        <thead id="prayer-head">
+                            <tr>
+                                <th scope="col">Day</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">🌙 Fajr</th>
+                                <th scope="col">🕌 Dhuhr</th>
+                                <th scope="col">☀️ Asr</th>
+                                <th scope="col">🌅 Maghrib</th>
+                                <th scope="col">🌃 Isha</th>
+                            </tr>
+                        </thead>
+                        <tbody id="prayer-body">
+                            <!-- Rendered by JS -->
+                        </tbody>
+                    </table>
+                </div>
+                <p class="table-source" data-en="Source: Islamic Foundation Bangladesh"
+                    data-bn="সূত্র: ইসলামিক ফাউন্ডেশন বাংলাদেশ">Source: Islamic Foundation Bangladesh</p>
+            </div>
+        </section>
+
+        <!-- ── Islamic Pattern ── -->
+        <div class="islamic-pattern" aria-hidden="true">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+
+        <!-- ── Duas ── -->
+        <section class="duas-section reveal" aria-label="Daily duas">
+            <div class="section-header">
+                <h2 class="section-title" data-en="Daily Duas" data-bn="দৈনিক দোয়া">Daily Duas</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="duas-grid duas-grid-3">
+                <div class="glass-card dua-card glow-gold" id="dua-sehri">
+                    <!-- Rendered by JS -->
+                </div>
+                <div class="glass-card dua-card glow-emerald" id="dua-iftar">
+                    <!-- Rendered by JS -->
+                </div>
+                <div class="glass-card dua-card glow-gold" id="dua-after-iftar">
+                    <!-- Rendered by JS -->
+                </div>
+            </div>
+            <p class="dua-source-note" id="dua-source">Source: Islamic Foundation Bangladesh</p>
+        </section>
+
+        <!-- ── Islamic Pattern ── -->
+        <div class="islamic-pattern" aria-hidden="true">✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦ ✦</div>
+
+        <!-- ── Footer ── -->
+        <footer role="contentinfo">
+            <span class="footer-moon" aria-hidden="true">🌙</span>
+            <p data-en="Made with ❤️ for the Muslims of Bangladesh" data-bn="বাংলাদেশের মুসলমানদের জন্য ❤️ দিয়ে তৈরি">
+                Made with ❤️ for the Muslims of Bangladesh</p>
+            <p style="margin-top:8px;font-size:0.8rem;opacity:0.5;">
+                <span data-en="Times are approximate. Please verify with your local mosque."
+                    data-bn="সময়গুলো আনুমানিক। আপনার স্থানীয় মসজিদের সাথে যাচাই করুন।">Times are approximate. Please
+                    verify with your local mosque.</span>
+            </p>
+        </footer>
+
+    </div><!-- /.page-wrapper -->
+
+    <script src="script.js"></script>
+</body>
+
+</html>

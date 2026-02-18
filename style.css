@@ -1,0 +1,1029 @@
+/* ============================================================
+   Ramadan 1447 Calendar — Bangladesh
+   Glassmorphism + Islamic Aesthetic Design
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ── CSS Variables ── */
+:root {
+  --bg-deep: #050d1a;
+  --bg-mid: #0a1628;
+  --bg-card: rgba(255, 255, 255, 0.05);
+  --bg-card-hover: rgba(255, 255, 255, 0.09);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-border-hover: rgba(255, 215, 0, 0.3);
+
+  --gold: #f0c040;
+  --gold-light: #ffd966;
+  --gold-dark: #c8960c;
+  --emerald: #00c896;
+  --emerald-dark: #00a07a;
+  --emerald-light: #4dffd2;
+  --amber: #ff9d3d;
+  --rose: #ff6b6b;
+  --lavender: #a78bfa;
+
+  --text-primary: #f0e8d0;
+  --text-secondary: rgba(240, 232, 208, 0.7);
+  --text-muted: rgba(240, 232, 208, 0.45);
+
+  --shadow-gold: 0 0 30px rgba(240, 192, 64, 0.2);
+  --shadow-emerald: 0 0 30px rgba(0, 200, 150, 0.2);
+  --shadow-card: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 40px;
+
+  --font-en: 'Inter', sans-serif;
+  --font-bn: 'Noto Sans Bengali', sans-serif;
+  --font-arabic: 'Amiri', serif;
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-en);
+  background: var(--bg-deep);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ── Background ── */
+.bg-gradient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 20% 20%, rgba(0, 200, 150, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 80%, rgba(240, 192, 64, 0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 0%, rgba(167, 139, 250, 0.06) 0%, transparent 40%),
+    linear-gradient(180deg, #050d1a 0%, #0a1628 50%, #060e1c 100%);
+  pointer-events: none;
+}
+
+/* ── Stars ── */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--dur, 3s) ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  0% {
+    opacity: 0.1;
+    transform: scale(0.8);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* ── Particles ── */
+#particles {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  bottom: -50px;
+  color: var(--gold);
+  animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* ── Main Layout ── */
+.page-wrapper {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ── Navbar ── */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(5, 13, 26, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+  margin: 0 -20px;
+  padding: 16px 20px;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(240, 192, 64, 0.5);
+}
+
+.nav-logo .crescent {
+  font-size: 1.6rem;
+  animation: moonGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes moonGlow {
+  0% {
+    filter: drop-shadow(0 0 8px rgba(240, 192, 64, 0.5));
+  }
+
+  100% {
+    filter: drop-shadow(0 0 20px rgba(240, 192, 64, 0.9));
+  }
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#live-clock {
+  font-size: 0.9rem;
+  color: var(--emerald);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  text-shadow: 0 0 10px rgba(0, 200, 150, 0.4);
+}
+
+#lang-toggle {
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: #0a1628;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-bn);
+  box-shadow: 0 4px 15px rgba(240, 192, 64, 0.3);
+}
+
+#lang-toggle:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(240, 192, 64, 0.5);
+}
+
+/* ── Hero Section ── */
+.hero {
+  text-align: center;
+  padding: 80px 0 60px;
+  position: relative;
+}
+
+.hero-moon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 20px;
+  animation: moonFloat 4s ease-in-out infinite;
+  filter: drop-shadow(0 0 30px rgba(240, 192, 64, 0.6));
+}
+
+@keyframes moonFloat {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  50% {
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+.hero-arabic {
+  font-family: var(--font-arabic);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  color: var(--gold);
+  text-shadow: 0 0 30px rgba(240, 192, 64, 0.4);
+  margin-bottom: 8px;
+  direction: rtl;
+  letter-spacing: 0.05em;
+}
+
+.hero-title {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--amber));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: var(--emerald);
+  font-weight: 500;
+  margin-bottom: 16px;
+  font-family: var(--font-bn);
+}
+
+.hero-desc {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  max-width: 500px;
+  margin: 0 auto 30px;
+}
+
+.hero-badges {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.badge-gold {
+  background: rgba(240, 192, 64, 0.15);
+  border: 1px solid rgba(240, 192, 64, 0.3);
+  color: var(--gold);
+}
+
+.badge-emerald {
+  background: rgba(0, 200, 150, 0.15);
+  border: 1px solid rgba(0, 200, 150, 0.3);
+  color: var(--emerald);
+}
+
+/* ── Mosque Silhouette ── */
+.mosque-silhouette {
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto 20px;
+  display: block;
+  opacity: 0.15;
+  filter: drop-shadow(0 0 20px rgba(240, 192, 64, 0.3));
+}
+
+/* ── Glass Card ── */
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--glass-border-hover);
+  box-shadow: var(--shadow-card), var(--shadow-gold);
+  transform: translateY(-3px);
+}
+
+/* ── Section Headers ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.section-subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.section-divider {
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+/* ── Countdown Section ── */
+.countdown-section {
+  padding: 40px 0;
+}
+
+.countdown-card {
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.countdown-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0, 200, 150, 0.05), rgba(240, 192, 64, 0.05));
+  border-radius: inherit;
+  transition: all 0.5s ease;
+}
+
+.countdown-card.iftar-mode::before {
+  background: linear-gradient(135deg, rgba(255, 157, 61, 0.08), rgba(240, 192, 64, 0.08));
+}
+
+#countdown-label {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.countdown-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cd-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.cd-value {
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  background: linear-gradient(180deg, var(--gold-light), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 80px;
+  text-align: center;
+  line-height: 1;
+  text-shadow: none;
+  filter: drop-shadow(0 0 15px rgba(240, 192, 64, 0.4));
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px rgba(240, 192, 64, 0.3));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 25px rgba(240, 192, 64, 0.7));
+  }
+}
+
+.cd-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.cd-colon {
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 800;
+  color: var(--gold);
+  opacity: 0.5;
+  margin-bottom: 20px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+
+  50% {
+    opacity: 0.1;
+  }
+}
+
+/* ── Today Card ── */
+.today-section {
+  padding: 20px 0 40px;
+}
+
+.today-card-wrapper {
+  padding: 36px;
+}
+
+.today-day-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--emerald-dark), var(--emerald));
+  color: #fff;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  box-shadow: 0 4px 15px rgba(0, 200, 150, 0.3);
+}
+
+.today-date {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.today-status {
+  display: inline-block;
+  padding: 6px 18px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--glass-border);
+  margin-bottom: 28px;
+  color: var(--text-secondary);
+}
+
+.today-status.fasting {
+  background: rgba(0, 200, 150, 0.15);
+  border-color: rgba(0, 200, 150, 0.4);
+  color: var(--emerald);
+  animation: fastingGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes fastingGlow {
+  0% {
+    box-shadow: 0 0 10px rgba(0, 200, 150, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 25px rgba(0, 200, 150, 0.5);
+  }
+}
+
+
+
+.time-block {
+  text-align: center;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  transition: all 0.3s ease;
+}
+
+.time-block:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+.sehri-block {
+  border-color: rgba(167, 139, 250, 0.3);
+}
+
+.iftar-block {
+  border-color: rgba(255, 157, 61, 0.3);
+}
+
+.time-icon {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.time-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.time-value {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.sehri-block .time-value {
+  color: var(--lavender);
+}
+
+.iftar-block .time-value {
+  color: var(--amber);
+}
+
+
+
+.today-empty {
+  text-align: center;
+  padding: 40px;
+  color: var(--text-secondary);
+}
+
+.today-empty .moon-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.starts-on {
+  color: var(--gold);
+  font-weight: 600;
+  margin-top: 8px;
+}
+
+/* ── Calendar Section ── */
+.calendar-section {
+  padding: 20px 0 60px;
+}
+
+.calendar-wrapper {
+  padding: 32px;
+  overflow: hidden;
+}
+
+.calendar-table-container {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  max-height: 500px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(240, 192, 64, 0.3) transparent;
+}
+
+.calendar-table-container::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.calendar-table-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.calendar-table-container::-webkit-scrollbar-thumb {
+  background: rgba(240, 192, 64, 0.3);
+  border-radius: 3px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+thead {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+thead tr {
+  background: rgba(240, 192, 64, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  border-bottom: 2px solid rgba(240, 192, 64, 0.2);
+}
+
+td {
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  color: var(--text-secondary);
+  transition: all 0.2s ease;
+}
+
+tbody tr {
+  transition: all 0.2s ease;
+}
+
+tbody tr:hover td {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.today-row td {
+  background: rgba(240, 192, 64, 0.08) !important;
+  color: var(--text-primary) !important;
+  font-weight: 600;
+}
+
+.today-row td:first-child {
+  color: var(--gold) !important;
+}
+
+.today-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+  color: #0a1628;
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 50px;
+  margin-left: 8px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.day-num {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.date-col {
+  color: var(--text-secondary);
+}
+
+.sehri-col {
+  color: var(--lavender);
+}
+
+.iftar-col {
+  color: var(--amber);
+}
+
+.moon-dot,
+.sun-dot {
+  margin-right: 6px;
+  font-size: 0.85em;
+}
+
+/* Prayer times column colors */
+.fajr-col {
+  color: var(--lavender);
+}
+
+.dhuhr-col {
+  color: var(--gold);
+}
+
+.asr-col {
+  color: var(--amber);
+}
+
+.maghrib-col {
+  color: #ff9d3d;
+}
+
+.isha-col {
+  color: #a78bfa;
+}
+
+/* Source note under tables */
+.table-source {
+  text-align: right;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+  font-style: italic;
+}
+
+/* Prayer section */
+.prayer-section {
+  padding: 20px 0 60px;
+}
+
+/* ── Duas Section ── */
+.duas-section {
+  padding: 20px 0 60px;
+}
+
+.duas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.duas-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.dua-source-note {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.dua-card {
+  padding: 32px;
+}
+
+.dua-card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(240, 192, 64, 0.2);
+}
+
+.dua-arabic {
+  font-family: var(--font-arabic);
+  font-size: 1.5rem;
+  direction: rtl;
+  text-align: right;
+  color: var(--gold-light);
+  line-height: 2;
+  margin-bottom: 16px;
+  text-shadow: 0 0 20px rgba(240, 192, 64, 0.3);
+}
+
+.dua-translit {
+  font-style: italic;
+  color: var(--emerald);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  background: rgba(0, 200, 150, 0.08);
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--emerald);
+}
+
+.dua-meaning {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* ── Decorative Islamic Pattern ── */
+.islamic-pattern {
+  text-align: center;
+  padding: 30px 0;
+  color: rgba(240, 192, 64, 0.2);
+  font-size: 1.5rem;
+  letter-spacing: 0.5em;
+  user-select: none;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  border-top: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+footer .footer-moon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 10px;
+  animation: moonFloat 4s ease-in-out infinite;
+}
+
+footer a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Today card — 5 prayer times ── */
+.today-times {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+  align-items: start;
+}
+
+.prayer-block {
+  border-color: rgba(240, 192, 64, 0.2);
+}
+
+.prayer-block .time-value {
+  color: var(--gold);
+}
+
+@media (max-width: 900px) {
+  .today-times {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .hero {
+    padding: 50px 0 40px;
+  }
+
+  .hero-moon {
+    font-size: 3.5rem;
+  }
+
+  .countdown-card {
+    padding: 28px 20px;
+  }
+
+  .countdown-grid {
+    gap: 10px;
+  }
+
+  .cd-value {
+    font-size: 2.5rem;
+    min-width: 60px;
+  }
+
+  .cd-colon {
+    font-size: 2rem;
+  }
+
+  .today-card-wrapper {
+    padding: 24px;
+  }
+
+  .today-times {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .calendar-wrapper {
+    padding: 20px;
+  }
+
+  th,
+  td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+
+  .duas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dua-card {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 1.8rem;
+  }
+
+  .cd-value {
+    font-size: 2rem;
+    min-width: 50px;
+  }
+
+  .countdown-grid {
+    gap: 6px;
+  }
+
+  .cd-colon {
+    font-size: 1.5rem;
+  }
+}
+
+/* ── Bangla font override ── */
+:lang(bn),
+.bn-text {
+  font-family: var(--font-bn);
+}
+
+/* ── Geometric decorative border ── */
+.geo-border {
+  position: relative;
+}
+
+.geo-border::after {
+  content: '✦ ✦ ✦';
+  position: absolute;
+  bottom: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(240, 192, 64, 0.3);
+  font-size: 0.7rem;
+  letter-spacing: 0.5em;
+  white-space: nowrap;
+}
+
+/* ── Glow effects ── */
+.glow-gold {
+  box-shadow: 0 0 30px rgba(240, 192, 64, 0.15), inset 0 0 30px rgba(240, 192, 64, 0.03);
+}
+
+.glow-emerald {
+  box-shadow: 0 0 30px rgba(0, 200, 150, 0.15), inset 0 0 30px rgba(0, 200, 150, 0.03);
+}
+
+/* ── Animated border ── */
+@keyframes borderGlow {
+
+  0%,
+  100% {
+    border-color: rgba(240, 192, 64, 0.2);
+  }
+
+  50% {
+    border-color: rgba(240, 192, 64, 0.5);
+  }
+}
+
+.animated-border {
+  animation: borderGlow 3s ease-in-out infinite;
+}
