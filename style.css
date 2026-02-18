@@ -674,6 +674,8 @@ td {
   border-bottom: 1px solid rgba(255, 255, 255, 0.04);
   color: var(--text-secondary);
   transition: all 0.2s ease;
+  white-space: nowrap;
+  /* prevent time strings wrapping */
 }
 
 tbody tr {
@@ -895,45 +897,75 @@ footer a {
   color: var(--gold);
 }
 
+/* ── 900px — tablet ── */
 @media (max-width: 900px) {
   .today-times {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
+/* ── 768px — mobile ── */
 @media (max-width: 768px) {
+
+  /* Navbar */
   .navbar {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
+    padding: 10px 16px;
   }
 
+  #live-clock {
+    font-size: 0.75rem;
+    max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Hero */
   .hero {
-    padding: 50px 0 40px;
+    padding: 40px 0 30px;
   }
 
   .hero-moon {
-    font-size: 3.5rem;
+    font-size: 3rem;
   }
 
+  .hero-badges {
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 0.72rem;
+    padding: 5px 12px;
+  }
+
+  /* Countdown */
   .countdown-card {
-    padding: 28px 20px;
+    padding: 24px 16px;
   }
 
   .countdown-grid {
-    gap: 10px;
+    gap: 8px;
   }
 
   .cd-value {
-    font-size: 2.5rem;
-    min-width: 60px;
+    font-size: 2.2rem;
+    min-width: 54px;
   }
 
   .cd-colon {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
+  #countdown-label {
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  /* Today card */
   .today-card-wrapper {
-    padding: 24px;
+    padding: 20px 16px;
   }
 
   .today-times {
@@ -941,41 +973,94 @@ footer a {
     gap: 10px;
   }
 
+  .time-icon {
+    font-size: 1.4rem;
+  }
+
+  .time-value {
+    font-size: 1.1rem;
+  }
+
+  /* Tables — compact */
   .calendar-wrapper {
-    padding: 20px;
+    padding: 16px 12px;
   }
 
-  th,
+  th {
+    padding: 10px 8px;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+  }
+
   td {
-    padding: 10px 12px;
-    font-size: 0.85rem;
+    padding: 9px 8px;
+    font-size: 0.8rem;
   }
 
-  .duas-grid {
+  /* Duas */
+  .duas-grid,
+  .duas-grid-3 {
     grid-template-columns: 1fr;
   }
 
   .dua-card {
-    padding: 24px;
+    padding: 20px;
+  }
+
+  .dua-arabic {
+    font-size: 1.25rem;
+  }
+
+  .dua-translit {
+    font-size: 0.85rem;
   }
 }
 
+/* ── 480px — small phones ── */
 @media (max-width: 480px) {
   .hero-title {
-    font-size: 1.8rem;
+    font-size: 1.7rem;
+  }
+
+  .hero-arabic {
+    font-size: 1.5rem;
   }
 
   .cd-value {
-    font-size: 2rem;
-    min-width: 50px;
+    font-size: 1.8rem;
+    min-width: 46px;
   }
 
   .countdown-grid {
-    gap: 6px;
+    gap: 5px;
   }
 
   .cd-colon {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  /* Stack today-times to 1 column on very small screens */
+  .today-times {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Tables — even more compact */
+  th {
+    padding: 8px 6px;
+    font-size: 0.65rem;
+  }
+
+  td {
+    padding: 8px 6px;
+    font-size: 0.75rem;
+  }
+
+  .section-title {
+    font-size: 1.4rem;
+  }
+
+  .dua-arabic {
+    font-size: 1.1rem;
   }
 }
 
