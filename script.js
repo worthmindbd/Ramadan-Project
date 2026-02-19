@@ -4,6 +4,118 @@
 // Ramadan 1 Ramadan 1447 = February 19, 2026
 // ============================================================
 
+// ============================================================
+// Bangladesh Divisions & Districts — Dual offsets (sehri/iftar)
+// Source: Official Islamic Foundation Bangladesh PDFs (divisions/)
+// sO = sehri offset from Dhaka (minutes), iO = iftar offset
+// ============================================================
+const DIVISIONS_DATA = {
+    dhaka: {
+        en: "Dhaka", bn: "ঢাকা",
+        districts: {
+            dhaka: { en: "Dhaka", bn: "ঢাকা", sO: 0, iO: 0 },
+            gazipur: { en: "Gazipur", bn: "গাজীপুর", sO: 0, iO: 0 },
+            narayanganj: { en: "Narayanganj", bn: "নারায়ণগঞ্জ", sO: -1, iO: -2 },
+            narsingdi: { en: "Narsingdi", bn: "নরসিংদী", sO: -2, iO: -2 },
+            kishoreganj: { en: "Kishoreganj", bn: "কিশোরগঞ্জ", sO: -3, iO: -3 },
+            munshiganj: { en: "Munshiganj", bn: "মুন্সীগঞ্জ", sO: -1, iO: -1 },
+            manikganj: { en: "Manikganj", bn: "মানিকগঞ্জ", sO: 1, iO: 1 },
+            tangail: { en: "Tangail", bn: "টাঙ্গাইল", sO: 1, iO: 0 },
+            faridpur: { en: "Faridpur", bn: "ফরিদপুর", sO: 2, iO: 3 },
+            madaripur: { en: "Madaripur", bn: "মাদারীপুর", sO: 0, iO: 1 },
+            gopalganj: { en: "Gopalganj", bn: "গোপালগঞ্জ", sO: 1, iO: 2 },
+            rajbari: { en: "Rajbari", bn: "রাজবাড়ী", sO: 3, iO: 3 },
+            shariatpur: { en: "Shariatpur", bn: "শরীয়তপুর", sO: -1, iO: -1 },
+        }
+    },
+    chittagong: {
+        en: "Chittagong", bn: "চট্টগ্রাম",
+        districts: {
+            chittagong: { en: "Chittagong", bn: "চট্টগ্রাম", sO: -7, iO: -5 },
+            comilla: { en: "Comilla", bn: "কুমিল্লা", sO: -4, iO: -3 },
+            chandpur: { en: "Chandpur", bn: "চাঁদপুর", sO: -2, iO: -2 },
+            lakshmipur: { en: "Lakshmipur", bn: "লক্ষ্মীপুর", sO: -2, iO: -2 },
+            noakhali: { en: "Noakhali", bn: "নোয়াখালী", sO: -4, iO: -3 },
+            feni: { en: "Feni", bn: "ফেনী", sO: -5, iO: -4 },
+            brahmanbaria: { en: "Brahmanbaria", bn: "ব্রাহ্মণবাড়িয়া", sO: -3, iO: -3 },
+            rangamati: { en: "Rangamati", bn: "রাঙ্গামাটি", sO: -9, iO: -7 },
+            khagrachari: { en: "Khagrachari", bn: "খাগড়াছড়ি", sO: -7, iO: -6 },
+            bandarban: { en: "Bandarban", bn: "বান্দরবান", sO: -10, iO: -7 },
+            coxsbazar: { en: "Cox's Bazar", bn: "কক্সবাজার", sO: -9, iO: -6 },
+        }
+    },
+    rajshahi: {
+        en: "Rajshahi", bn: "রাজশাহী",
+        districts: {
+            rajshahi: { en: "Rajshahi", bn: "রাজশাহী", sO: 6, iO: 6 },
+            bogra: { en: "Bogra", bn: "বগুড়া", sO: 3, iO: 3 },
+            pabna: { en: "Pabna", bn: "পাবনা", sO: 3, iO: 3 },
+            sirajganj: { en: "Sirajganj", bn: "সিরাজগঞ্জ", sO: 3, iO: 2 },
+            natore: { en: "Natore", bn: "নাটোর", sO: 5, iO: 4 },
+            naogaon: { en: "Naogaon", bn: "নওগাঁ", sO: 6, iO: 5 },
+            joypurhat: { en: "Joypurhat", bn: "জয়পুরহাট", sO: 5, iO: 3 },
+            chapainawabganj: { en: "Chapai Nawabganj", bn: "চাঁপাইনবাবগঞ্জ", sO: 8, iO: 7 },
+        }
+    },
+    khulna: {
+        en: "Khulna", bn: "খুলনা",
+        districts: {
+            khulna: { en: "Khulna", bn: "খুলনা", sO: 3, iO: 4 },
+            jashore: { en: "Jashore", bn: "যশোর", sO: 4, iO: 5 },
+            satkhira: { en: "Satkhira", bn: "সাতক্ষীরা", sO: 4, iO: 5 },
+            narail: { en: "Narail", bn: "নড়াইল", sO: 3, iO: 3 },
+            magura: { en: "Magura", bn: "মাগুরা", sO: 3, iO: 3 },
+            jhenaidah: { en: "Jhenaidah", bn: "ঝিনাইদহ", sO: 4, iO: 5 },
+            kushtia: { en: "Kushtia", bn: "কুষ্টিয়া", sO: 5, iO: 5 },
+            meherpur: { en: "Meherpur", bn: "মেহেরপুর", sO: 7, iO: 6 },
+            chuadanga: { en: "Chuadanga", bn: "চুয়াডাঙ্গা", sO: 6, iO: 5 },
+            bagerhat: { en: "Bagerhat", bn: "বাগেরহাট", sO: 2, iO: 3 },
+        }
+    },
+    sylhet: {
+        en: "Sylhet", bn: "সিলেট",
+        districts: {
+            sylhet: { en: "Sylhet", bn: "সিলেট", sO: -8, iO: -8 },
+            moulvibazar: { en: "Moulvibazar", bn: "মৌলভীবাজার", sO: -7, iO: -7 },
+            habiganj: { en: "Habiganj", bn: "হবিগঞ্জ", sO: -6, iO: -5 },
+            sunamganj: { en: "Sunamganj", bn: "সুনামগঞ্জ", sO: -4, iO: -5 },
+        }
+    },
+    rangpur: {
+        en: "Rangpur", bn: "রংপুর",
+        districts: {
+            rangpur: { en: "Rangpur", bn: "রংপুর", sO: 5, iO: 2 },
+            dinajpur: { en: "Dinajpur", bn: "দিনাজপুর", sO: 5, iO: 4 },
+            gaibandha: { en: "Gaibandha", bn: "গাইবান্ধা", sO: 4, iO: 2 },
+            kurigram: { en: "Kurigram", bn: "কুড়িগ্রাম", sO: 3, iO: 0 },
+            lalmonirhat: { en: "Lalmonirhat", bn: "লালমনিরহাট", sO: 4, iO: 2 },
+            nilphamari: { en: "Nilphamari", bn: "নীলফামারী", sO: 6, iO: 3 },
+            panchagarh: { en: "Panchagarh", bn: "পঞ্চগড়", sO: 8, iO: 4 },
+            thakurgaon: { en: "Thakurgaon", bn: "ঠাকুরগাঁও", sO: 8, iO: 6 },
+        }
+    },
+    barishal: {
+        en: "Barishal", bn: "বরিশাল",
+        districts: {
+            barishal: { en: "Barishal", bn: "বরিশাল", sO: -1, iO: 1 },
+            bhola: { en: "Bhola", bn: "ভোলা", sO: -3, iO: -1 },
+            barguna: { en: "Barguna", bn: "বরগুনা", sO: 0, iO: 2 },
+            pirojpur: { en: "Pirojpur", bn: "পিরোজপুর", sO: 1, iO: 1 },
+            patuakhali: { en: "Patuakhali", bn: "পটুয়াখালী", sO: -1, iO: 1 },
+            jhalokati: { en: "Jhalokati", bn: "ঝালকাঠি", sO: 0, iO: 1 },
+        }
+    },
+    mymensingh: {
+        en: "Mymensingh", bn: "ময়মনসিংহ",
+        districts: {
+            mymensingh: { en: "Mymensingh", bn: "ময়মনসিংহ", sO: -1, iO: -1 },
+            sherpur: { en: "Sherpur", bn: "শেরপুর", sO: 1, iO: -1 },
+            netrokona: { en: "Netrokona", bn: "নেত্রকোনা", sO: -3, iO: -3 },
+            jamalpur: { en: "Jamalpur", bn: "জামালপুর", sO: 2, iO: 0 },
+        }
+    }
+};
+
 const LANG = {
     en: {
         title: "Ramadan 1447",
@@ -20,7 +132,7 @@ const LANG = {
         mins: "Mins",
         secs: "Secs",
         calendarTitle: "Ramadan Calendar 2026",
-        calendarSubtitle: "Dhaka, Bangladesh — All times in BST (UTC+6)",
+        calendarSubtitle: ", Bangladesh — All times in BST (UTC+6)",
         day: "Day",
         date: "Date",
         sehriCol: "Sehri Ends",
@@ -31,8 +143,9 @@ const LANG = {
         maghribCol: "Maghrib",
         ishaCol: "Isha",
         prayerTitle: "Daily Prayer Times",
-        prayerSubtitle: "Dhaka, Bangladesh — 5 Daily Prayers during Ramadan 2026",
+        prayerSubtitle: ", Bangladesh — 5 Daily Prayers during Ramadan 2026",
         duaTitle: "Daily Duas",
+        selectDivision: "Select Division",
         // ── Sehri Niyyah (Roza Niyyat) ──
         // Source: Islamic Foundation Bangladesh / Dainik Bangla / Prothom Alo
         duaSehriTitle: "Sehri Niyyah (Roza Niyyat)",
@@ -73,7 +186,7 @@ const LANG = {
         mins: "মিনিট",
         secs: "সেকেন্ড",
         calendarTitle: "রমজান ক্যালেন্ডার ২০২৬",
-        calendarSubtitle: "ঢাকা, বাংলাদেশ — সকল সময় BST (UTC+6)",
+        calendarSubtitle: ", বাংলাদেশ — সকল সময় BST (UTC+6)",
         day: "দিন",
         date: "তারিখ",
         sehriCol: "সেহরির শেষ সময়",
@@ -84,8 +197,9 @@ const LANG = {
         maghribCol: "মাগরিব",
         ishaCol: "এশা",
         prayerTitle: "দৈনিক নামাজের সময়",
-        prayerSubtitle: "ঢাকা, বাংলাদেশ — রমজান ২০২৬ এর ৫ ওয়াক্ত নামাজ",
+        prayerSubtitle: ", বাংলাদেশ — রমজান ২০২৬ এর ৫ ওয়াক্ত নামাজ",
         duaTitle: "দৈনিক দোয়া",
+        selectDivision: "বিভাগ নির্বাচন",
         // ── সেহরির নিয়ত ──
         duaSehriTitle: "সেহরির নিয়ত (রোজার নিয়ত)",
         duaSehriArabic: "نَوَيْتُ اَنْ اُصُوْمَ غَدًا مِّنْ شَهْرِ رَمْضَانَ الْمُبَارَكِ فَرْضًا لَكَ يَا اللهُ فَتَقَبَّلْ مِنِّيْ اِنَّكَ اَنْتَ السَّمِيْعُ الْعَلِيْم",
@@ -166,6 +280,66 @@ const BANGLA_MONTHS = {
 
 // ── State ──
 let currentLang = localStorage.getItem('ramadan-lang') || 'en';
+let currentDivision = localStorage.getItem('ramadan-division') || 'dhaka';
+let currentDistrict = localStorage.getItem('ramadan-district') || 'dhaka';
+
+// ── Helpers for the new data structure ──
+function getDivisionData() {
+    return DIVISIONS_DATA[currentDivision] || DIVISIONS_DATA.dhaka;
+}
+
+function getDistrictData() {
+    const div = getDivisionData();
+    return div.districts[currentDistrict] || Object.values(div.districts)[0];
+}
+
+function getDivisionName() {
+    const div = getDivisionData();
+    return currentLang === 'bn' ? div.bn : div.en;
+}
+
+function getDistrictName() {
+    const dist = getDistrictData();
+    return currentLang === 'bn' ? dist.bn : dist.en;
+}
+
+function getLocationName() {
+    return `${getDistrictName()}, ${getDivisionName()}`;
+}
+
+// ── Apply sehri offset to "HH:MM" ──
+function applySehriOffset(timeStr) {
+    const offset = getDistrictData().sO;
+    if (offset === 0) return timeStr;
+    return applyMinuteOffset(timeStr, offset);
+}
+
+// ── Apply iftar offset to "HH:MM" ──
+function applyIftarOffset(timeStr) {
+    const offset = getDistrictData().iO;
+    if (offset === 0) return timeStr;
+    return applyMinuteOffset(timeStr, offset);
+}
+
+// ── Generic minute offset on "HH:MM" ──
+function applyMinuteOffset(timeStr, offset) {
+    const [h, m] = timeStr.split(':').map(Number);
+    let totalMin = h * 60 + m + offset;
+    if (totalMin < 0) totalMin += 1440;
+    if (totalMin >= 1440) totalMin -= 1440;
+    const nh = Math.floor(totalMin / 60);
+    const nm = totalMin % 60;
+    return `${String(nh).padStart(2, '0')}:${String(nm).padStart(2, '0')}`;
+}
+
+// Ensure currentDistrict belongs to currentDivision
+function validateDistrictForDivision() {
+    const div = getDivisionData();
+    if (!div.districts[currentDistrict]) {
+        currentDistrict = Object.keys(div.districts)[0];
+        localStorage.setItem('ramadan-district', currentDistrict);
+    }
+}
 
 // ── Bangladesh Time (UTC+6) ──
 function getBDTime() {
@@ -194,8 +368,12 @@ function parseTimeToday(timeStr, offsetDays = 0) {
 }
 
 // ── Format time "HH:MM" → display string ──
-function formatTime(timeStr, lang) {
-    const [h, m] = timeStr.split(':').map(Number);
+// offsetType: 'sehri' | 'iftar' | 'none' — controls which district offset to apply
+function formatTime(timeStr, lang, offsetType) {
+    let adjusted = timeStr;
+    if (offsetType === 'sehri') adjusted = applySehriOffset(timeStr);
+    else if (offsetType === 'iftar') adjusted = applyIftarOffset(timeStr);
+    const [h, m] = adjusted.split(':').map(Number);
     const pad = String(m).padStart(2, '0');
     if (lang === 'bn') {
         const period = h < 5 ? 'রাত' : h < 12 ? 'ভোর' : h < 15 ? 'দুপুর' : h < 18 ? 'বিকেল' : 'সন্ধ্যা';
@@ -249,8 +427,8 @@ function updateCountdown() {
     }
 
     const data = RAMADAN_DATA[todayIdx];
-    const sehriTime = parseTimeToday(data.sehri);
-    const iftarTime = parseTimeToday(data.iftar);
+    const sehriTime = parseTimeToday(applySehriOffset(data.sehri));
+    const iftarTime = parseTimeToday(applyIftarOffset(data.iftar));
 
     let targetTime, targetLabel, type;
 
@@ -261,7 +439,7 @@ function updateCountdown() {
     } else {
         const nextIdx = todayIdx + 1;
         if (nextIdx < 30) {
-            targetTime = parseTimeToday(RAMADAN_DATA[nextIdx].sehri, 1);
+            targetTime = parseTimeToday(applySehriOffset(RAMADAN_DATA[nextIdx].sehri), 1);
             targetLabel = L.sehriEnd; type = 'sehri';
         } else {
             if (label) label.textContent = currentLang === 'bn' ? 'রমজান সমাপ্ত 🌙' : 'Ramadan Complete 🌙';
@@ -269,7 +447,7 @@ function updateCountdown() {
         }
     }
 
-    if (label) label.textContent = `${L.countdownTitle} ${targetLabel}`;
+    if (label) label.textContent = `${L.countdownTitle} ${targetLabel} — ${getDistrictName()}`;
     const card = document.querySelector('.countdown-card');
     if (card) card.classList.toggle('iftar-mode', type === 'iftar');
     renderCountdown(Math.max(0, targetTime - bd), dEl, hEl, mEl, sEl);
@@ -307,8 +485,8 @@ function renderTodayCard() {
 
     const data = RAMADAN_DATA[todayIdx];
     const bd = getBDTime();
-    const sehriTime = parseTimeToday(data.sehri);
-    const iftarTime = parseTimeToday(data.iftar);
+    const sehriTime = parseTimeToday(applySehriOffset(data.sehri));
+    const iftarTime = parseTimeToday(applyIftarOffset(data.iftar));
     const isFasting = bd >= sehriTime && bd < iftarTime;
     const statusText = isFasting
         ? (currentLang === 'bn' ? '🌟 রোজা চলছে' : '🌟 Fasting in Progress')
@@ -327,27 +505,27 @@ function renderTodayCard() {
       <div class="time-block sehri-block">
         <div class="time-icon">🌙</div>
         <div class="time-label">${L.sehriEnd}</div>
-        <div class="time-value">${formatTime(data.sehri, currentLang)}</div>
+        <div class="time-value">${formatTime(data.sehri, currentLang, 'sehri')}</div>
       </div>
       <div class="time-block prayer-block">
         <div class="time-icon">🕌</div>
         <div class="time-label">${L.dhuhrCol}</div>
-        <div class="time-value">${formatTime(data.dhuhr, currentLang)}</div>
+        <div class="time-value">${formatTime(data.dhuhr, currentLang, 'sehri')}</div>
       </div>
       <div class="time-block prayer-block">
         <div class="time-icon">☀️</div>
         <div class="time-label">${L.asrCol}</div>
-        <div class="time-value">${formatTime(data.asr, currentLang)}</div>
+        <div class="time-value">${formatTime(data.asr, currentLang, 'iftar')}</div>
       </div>
       <div class="time-block iftar-block">
         <div class="time-icon">🌅</div>
         <div class="time-label">${L.iftarTime}</div>
-        <div class="time-value">${formatTime(data.iftar, currentLang)}</div>
+        <div class="time-value">${formatTime(data.iftar, currentLang, 'iftar')}</div>
       </div>
       <div class="time-block prayer-block">
         <div class="time-icon">🌃</div>
         <div class="time-label">${L.ishaCol}</div>
-        <div class="time-value">${formatTime(data.isha, currentLang)}</div>
+        <div class="time-value">${formatTime(data.isha, currentLang, 'iftar')}</div>
       </div>
     </div>`;
 }
@@ -369,6 +547,12 @@ function renderCalendar() {
     </tr>`;
     }
 
+    // Update calendar subtitle with selected district
+    const calSub = document.querySelector('.calendar-section .section-subtitle');
+    if (calSub) {
+        calSub.textContent = getDistrictName() + L.calendarSubtitle;
+    }
+
     tbody.innerHTML = RAMADAN_DATA.map((d, i) => {
         const isToday = i === todayIdx;
         const dayNum = currentLang === 'bn' ? toBanglaNum(d.day) : d.day;
@@ -377,8 +561,8 @@ function renderCalendar() {
         return `<tr class="${isToday ? 'today-row' : ''}" data-day="${d.day}">
       <td class="day-num">${dayNum}${badge}</td>
       <td class="date-col">${dateStr}</td>
-      <td class="sehri-col"><span class="moon-dot">🌙</span>${formatTime(d.sehri, currentLang)}</td>
-      <td class="iftar-col"><span class="sun-dot">🌅</span>${formatTime(d.iftar, currentLang)}</td>
+      <td class="sehri-col"><span class="moon-dot">🌙</span>${formatTime(d.sehri, currentLang, 'sehri')}</td>
+      <td class="iftar-col"><span class="sun-dot">🌅</span>${formatTime(d.iftar, currentLang, 'iftar')}</td>
     </tr>`;
     }).join('');
 
@@ -410,6 +594,12 @@ function renderPrayerTimes() {
     </tr>`;
     }
 
+    // Update prayer subtitle with selected district
+    const praySub = document.querySelector('.prayer-section .section-subtitle');
+    if (praySub) {
+        praySub.textContent = getDistrictName() + L.prayerSubtitle;
+    }
+
     tbody.innerHTML = RAMADAN_DATA.map((d, i) => {
         const isToday = i === todayIdx;
         const dayNum = currentLang === 'bn' ? toBanglaNum(d.day) : d.day;
@@ -418,11 +608,11 @@ function renderPrayerTimes() {
         return `<tr class="${isToday ? 'today-row' : ''}" data-day="${d.day}">
       <td class="day-num">${dayNum}${badge}</td>
       <td class="date-col">${dateStr}</td>
-      <td class="fajr-col">${formatTime(d.sehri, currentLang)}</td>
-      <td class="dhuhr-col">${formatTime(d.dhuhr, currentLang)}</td>
-      <td class="asr-col">${formatTime(d.asr, currentLang)}</td>
-      <td class="maghrib-col">${formatTime(d.iftar, currentLang)}</td>
-      <td class="isha-col">${formatTime(d.isha, currentLang)}</td>
+      <td class="fajr-col">${formatTime(d.sehri, currentLang, 'sehri')}</td>
+      <td class="dhuhr-col">${formatTime(d.dhuhr, currentLang, 'sehri')}</td>
+      <td class="asr-col">${formatTime(d.asr, currentLang, 'iftar')}</td>
+      <td class="maghrib-col">${formatTime(d.iftar, currentLang, 'iftar')}</td>
+      <td class="isha-col">${formatTime(d.isha, currentLang, 'iftar')}</td>
     </tr>`;
     }).join('');
 }
@@ -450,10 +640,83 @@ function renderDuas() {
     if (srcEl) srcEl.textContent = L.source;
 }
 
+// ── Render division selector pills ──
+function renderDivisionSelector() {
+    const container = document.getElementById('division-selector');
+    if (!container) return;
+
+    // Build division pills
+    const divKeys = Object.keys(DIVISIONS_DATA);
+    container.innerHTML = divKeys.map(key => {
+        const d = DIVISIONS_DATA[key];
+        const name = currentLang === 'bn' ? d.bn : d.en;
+        const isActive = key === currentDivision;
+        const distCount = Object.keys(d.districts).length;
+        const badge = currentLang === 'bn' ? `${toBanglaNum(distCount)} জেলা` : `${distCount} districts`;
+        return `<button class="division-pill ${isActive ? 'active' : ''}" 
+                  data-division="${key}" 
+                  aria-label="${name} (${badge})">
+          <span class="pill-name">${name}</span>
+          <span class="pill-offset">${badge}</span>
+        </button>`;
+    }).join('');
+
+    // Attach click handlers
+    container.querySelectorAll('.division-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentDivision = btn.dataset.division;
+            localStorage.setItem('ramadan-division', currentDivision);
+            validateDistrictForDivision();
+            applyLanguage();
+        });
+    });
+}
+
+// ── Render district selector (dropdown) ──
+function renderDistrictSelector() {
+    const container = document.getElementById('district-selector');
+    if (!container) return;
+
+    validateDistrictForDivision();
+    const div = getDivisionData();
+    const distKeys = Object.keys(div.districts);
+
+    container.innerHTML = distKeys.map(key => {
+        const d = div.districts[key];
+        const name = currentLang === 'bn' ? d.bn : d.en;
+        const isActive = key === currentDistrict;
+        // Build offset label
+        let offsetLabel = '';
+        if (d.sO === 0 && d.iO === 0) {
+            offsetLabel = currentLang === 'bn' ? 'মূল' : 'Base';
+        } else {
+            const sSign = d.sO > 0 ? '+' : '';
+            const iSign = d.iO > 0 ? '+' : '';
+            offsetLabel = `S:${sSign}${d.sO} I:${iSign}${d.iO}`;
+        }
+        return `<button class="district-pill ${isActive ? 'active' : ''}" 
+                  data-district="${key}">
+          <span class="pill-name">${name}</span>
+          <span class="pill-offset">${offsetLabel}</span>
+        </button>`;
+    }).join('');
+
+    // Attach click handlers
+    container.querySelectorAll('.district-pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+            currentDistrict = btn.dataset.district;
+            localStorage.setItem('ramadan-district', currentDistrict);
+            applyLanguage();
+        });
+    });
+}
+
 // ── Apply language ──
 function applyLanguage() {
     const L = LANG[currentLang];
     document.documentElement.lang = currentLang === 'bn' ? 'bn' : 'en';
+
+    validateDistrictForDivision();
 
     document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = currentLang === 'bn' ? el.dataset.bn : el.dataset.en;
@@ -462,6 +725,18 @@ function applyLanguage() {
     const toggleBtn = document.getElementById('lang-toggle');
     if (toggleBtn) toggleBtn.textContent = L.toggleLang;
 
+    // Update hero location badge
+    const locationBadge = document.querySelector('[data-en="Dhaka, Bangladesh"]');
+    if (locationBadge) {
+        const distName = getDistrictName();
+        const divName = getDivisionName();
+        locationBadge.textContent = currentLang === 'bn'
+            ? `${distName}, ${divName}`
+            : `${distName}, ${divName}`;
+    }
+
+    renderDivisionSelector();
+    renderDistrictSelector();
     renderTodayCard();
     renderCalendar();
     renderPrayerTimes();
